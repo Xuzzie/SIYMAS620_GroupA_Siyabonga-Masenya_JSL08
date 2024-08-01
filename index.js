@@ -13,20 +13,26 @@ class BankBranch {
   constructor(branchInfo) {
     if (bankBranchInstance === null) {
       this.branchInfo = branchInfo;
+      bankBranchInstance = this;
     } else {
       return bankBranchInstance;
     }
   }
   // 4. Add methods to the `BankBranch` class for managing branch-related information. For example, you can add a method like `getBranchInfo` to retrieve branch details.
   getBranchInfo(branchInfo) {
-    return branchInfo;
+    return this.branchInfo;
   }
+  // 5. In the usage section:
+  //    - Create instances of the `BankBranch` class, such as `branchA` and `branchB`, with different branch information.
+  //    - Use the `getBranchInfo` method to retrieve branch information from the instances.
+  //    - Verify that `branchA` and `branchB` are both referring to the same instance by comparing them using `===`.
 }
 
-// 5. In the usage section:
-//    - Create instances of the `BankBranch` class, such as `branchA` and `branchB`, with different branch information.
-//    - Use the `getBranchInfo` method to retrieve branch information from the instances.
-//    - Verify that `branchA` and `branchB` are both referring to the same instance by comparing them using `===`.
+let cacheBank_Sandton = new BankBranch("Cachebank Sandton branch info"); // since this code was intially null , what will happen is that this will become the "Branch Info"
+let cacheBank_Midrand = new BankBranch("Cachebank Midrand branch  info "); // Since the null value has been filled with "Cachebank Sandton branch info" when looged ,this line of code will log out "Cachebank Sandton branch info"
+
+console.log(cacheBank_Sandton.getBranchInfo());
+console.log(cacheBank_Midrand.getBranchInfo());
 
 // This pseudo-code provides a step-by-step explanation of how to implement the Singleton Pattern for managing a single instance of the `BankBranch` class throughout the application, ensuring that multiple instances refer to the same object.
 
@@ -43,4 +49,3 @@ class BankBranch {
 // - The `getBranchInfo` method allows us to retrieve the branch information from the singleton instance.
 // - We demonstrate the Singleton pattern by creating two instances (`branchA` and `branchB`) and show that they both point to the same instance,
 //   ensuring that there is only one set of branch information throughout the application.
-console.log(BankBranch);
